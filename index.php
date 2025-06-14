@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-header">
             <h3>PHP PDO CRUD 
-                <a href="product-add.php" class="btn btn-primary">Add Product</a>
+                <a href="product-add.php" class="btn btn-primary float-end">Add Product</a>
             </h3>
         </div>
     </div>
