@@ -21,6 +21,7 @@ include('dbcon.php');
         <div class="card-header">
             <h3>PHP PDO ONLINE STORE 
                 <a href="product-add.php" class="btn btn-primary float-end">Add Product</a>
+                <a href="category-add.php" class="btn btn-primary float-end">Add Category</a>
                 <a href="logout.php" class="btn btn-primary float-end">LOGOUT</a>
             </h3>
         </div>
