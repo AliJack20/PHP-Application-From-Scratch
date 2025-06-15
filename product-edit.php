@@ -7,7 +7,7 @@ include('dbcon.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="wodth=device-width, initial-scale=1.0">
-    <title>Insert data into databse using PHP PDO</title>
+    <title>Update data into databse using PHP PDO</title>
     <div class="card">
         <div class="card-header">
             <h3>Edit and Update data into databse using PHP PDO
@@ -63,6 +63,7 @@ include('dbcon.php');
                     <input type="text" name="productImage" value ="<?= $result->image; ?>" class="form-control" />
                 </div>  
 
+                <input type="hidden" name="productID" value="<?= $result->id; ?>" />
                 <div class = "mb-3">
                     <button type ="submit" name="update_product_btn" class = "btn btn-primary">Update Product</button>
                 </div>

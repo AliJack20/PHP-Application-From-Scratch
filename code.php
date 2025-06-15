@@ -14,19 +14,18 @@ if(isset($_POST['update_product_btn'])){
 
     try{
 
-        $query = "UPDATE products SET id =:productID, name=:productname, description=: product_Description, price=: productprice, category_id=: productCategoryID, image=: productImage WHERE id=:prod_id LIMIT 1";
+        $query = "UPDATE products SET name = :productname, description = :product_Description, price = :productprice, category_id = :productCategoryID, image = :productImage WHERE id = :productID LIMIT 1";
         $stament = $conn->prepare($query);
 
         $data = [
-            ':id' => $productID,
-            ':name' => $productname,
-            ':description' => $product_Description,
-            ':price' => $productprice,
-            ':category_id' => $productCategoryID,
-            ':image' => $productImage,
-            ':id' => $productID
-
+            ':productID' => $productID,
+            ':productname' => $productname,
+            ':product_Description' => $product_Description,
+            ':productprice' => $productprice,
+            ':productCategoryID' => $productCategoryID,
+            ':productImage' => $productImage
         ];
+
 
         $query_execute = $stament->execute($data);
 
