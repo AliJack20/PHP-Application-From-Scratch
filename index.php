@@ -15,9 +15,11 @@ include('dbcon.php');
     <?php
         unset($_SESSION['message']);
         endif;  ?>
+
+    
     <div class="card">
         <div class="card-header">
-            <h3>PHP PDO CRUD 
+            <h3>PHP PDO STORE 
                 <a href="product-add.php" class="btn btn-primary float-end">Add Product</a>
             </h3>
         </div>

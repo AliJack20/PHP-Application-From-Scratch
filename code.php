@@ -3,6 +3,76 @@
 session_start();
 include('dbcon.php');
 
+// Registration
+if (isset($_POST['register_btn'])) {
+
+    $id = $_POST['id'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $password =$_POST['password']; // secure password hashing
+
+
+    try {
+        $query = "INSERT INTO member (id, fullname, email, password)
+                  VALUES (:id, :fullname, :email, :password)";
+
+        $query_run = $conn->prepare($query);
+
+        $data = [
+            ':id' => $id,
+            ':fullname' => $fullname,
+            ':email' => $email,
+            ':password' => $password
+        ];
+
+        $query_execute = $query_run->execute($data);
+
+        if ($query_execute) {
+            $_SESSION['message'] = "Registered successfully!";
+            header("Location: login.php");
+            exit(0);
+        }
+
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+//kane password= kane
+
+// Login
+if (isset($_POST['login_btn'])) {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    try {
+        $query = "SELECT * FROM member WHERE email = :email LIMIT 1";
+        $stmt = $conn->prepare($query);
+        $stmt->execute([':email' => $email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && $password === $user['password'])  {
+            // Success: store session and redirect
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['fullname'] = $user['fullname'];
+
+            $_SESSION['message'] = "Logged in successfully!";
+            header("Location: index.php"); 
+            exit();
+        } else {
+            $_SESSION['message'] = "Invalid email or password.";
+            header("Location: login.php");
+            exit(0);
+        }
+
+    } catch (PDOException $e) {
+        echo "Login Error: " . $e->getMessage();
+    }
+}
+
+
+
 if(isset($_POST['delete_product']))
 {
 
@@ -16,7 +86,7 @@ if(isset($_POST['delete_product']))
         $query_execute = $stament->execute($data);
 
         if($query_execute){
-             $_SESSION['message'] = "Deleted Succesfully";
+            $_SESSION['message'] = "Deleted Succesfully";
             header('Location: index.php');
             exit(0);
 
