@@ -32,6 +32,7 @@ include('dbcon.php');
                         <th>category_id</th>
                         <th>Image</th>
                         <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     
                 </thread>
@@ -57,6 +58,11 @@ include('dbcon.php');
                                     <td><?= $row->image; ?></td>
                                     <td>
                                         <a href="product-edit.php?id=<?= $row->id ?>" class="btn btn-primary"> Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="code.php"method= "POST">
+                                            <button type="submit" name="delete_product" value="<?=  $row->id  ?>" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 <?php

@@ -3,6 +3,32 @@
 session_start();
 include('dbcon.php');
 
+if(isset($_POST['delete_product']))
+{
+
+    $productID= $_POST['delete_product'];
+
+    try
+    {
+        $query = "DELETE FROM products WHERE id = :productID";
+        $stament = $conn->prepare($query);
+        $data = [':productID' => $productID];
+        $query_execute = $stament->execute($data);
+
+        if($query_execute){
+             $_SESSION['message'] = "Deleted Succesfully";
+            header('Location: index.php');
+            exit(0);
+
+        } 
+
+    } catch(PDOException $e) {
+        echo $e->getMessage();
+
+    }
+
+}
+
 if(isset($_POST['update_product_btn'])){
 
     $productID= $_POST['productID'];
