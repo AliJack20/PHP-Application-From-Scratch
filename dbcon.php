@@ -3,7 +3,7 @@
 $servername= "localhost";
 $username = "root";
 $password = "";
-$databse = "php store";
+$database = "php store";
 
 try{
 
