@@ -30,7 +30,7 @@ include('dbcon.php');
             }
             ?>
 
-            <form action="code.php" method= "POST">
+            <form action="code.php" method= "POST"  enctype="multipart/form-data">
 
                 
                 <div class = "mb-3">
@@ -59,8 +59,8 @@ include('dbcon.php');
                 </div>  
 
                 <div class = "mb-3">
-                    <label>Product Image</label>
-                    <input type="text" name="productImage" value ="<?= $result->image; ?>" class="form-control" />
+                    <label for="productImage">Product Image:</label>
+                    <input type="file" name="productImage" id="productImage" accept="image/*">
                 </div>  
 
                 <input type="hidden" name="productID" value="<?= $result->id; ?>" />

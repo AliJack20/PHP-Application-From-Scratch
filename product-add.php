@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
 
-            <form action="code.php" method= "POST">
+            <form action="code.php" method= "POST" enctype="multipart/form-data">
                 <div class = "mb-3">
                     <label>Product ID</label>
                     <input type="text" name="productID" class="form-control" />
@@ -40,8 +40,8 @@
                 </div>  
 
                 <div class = "mb-3">
-                    <label>Product Image</label>
-                    <input type="text" name="productImage" class="form-control" />
+                     <label for="productImage">Product Image:</label>
+                     <input type="file" name="productImage" id="productImage" accept="image/*">
                 </div>  
 
                 <div class = "mb-3">

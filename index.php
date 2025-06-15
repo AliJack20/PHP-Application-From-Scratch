@@ -55,12 +55,12 @@ include('dbcon.php');
                                     <td><?= $row->description; ?></td>
                                     <td><?= $row->price; ?></td>
                                     <td><?= $row->category_id; ?></td>
-                                    <td><?= $row->image; ?></td>
+                                    <td><img src="<?= $row->image; ?>" width="100" height="100"></td>
                                     <td>
                                         <a href="product-edit.php?id=<?= $row->id ?>" class="btn btn-primary"> Edit</a>
                                     </td>
                                     <td>
-                                        <form action="code.php"method= "POST">
+                                        <form action="code.php"method= "POST"  enctype="multipart/form-data">
                                             <button type="submit" name="delete_product" value="<?=  $row->id  ?>" class="btn btn-danger">Delete</button>
                                         </form>
                                     </td>
